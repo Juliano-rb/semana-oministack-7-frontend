@@ -22,8 +22,6 @@ class Feed extends Component{
     registerToSocket = () => {
         const socket = io('http://localhost:3333');
 
-        // post, like 
-        
         socket.on('post', newPost =>{
             this.setState( {feed : [newPost, ...this.state.feed] } )
         });
@@ -35,10 +33,24 @@ class Feed extends Component{
                 )
             });
         })
+
+        socket.on('remotion', removedPost =>{
+            console.log("Removendo post")
+            this.setState({
+                feed: this.state.feed.filter( (post)=>{
+                        return post._id !== removedPost._id
+                    }
+                )
+            });
+        })
     }
 
     handleLike = id => {
         api.post(`posts/${id}/like`)
+    }
+
+    removePost = id => {
+        api.post(`posts/${id}/remove`)
     }
 
     render(){
@@ -62,6 +74,9 @@ class Feed extends Component{
                                 </button>
                                 <img src={comment} alt=''/>
                                 <img src={send} alt=''/>
+                                <button onClick={ () => this.removePost(post._id) }>
+                                    <img src={send} alt=''/>
+                                </button>
                             </div>
                             
                             <strong>{post.likes} curtidas</strong>
