@@ -66,7 +66,7 @@ class Feed extends Component{
                                 <span className='place'>{post.place}</span>
                             </div>
                         </header>
-                        <img src={`${REACT_APP_API_URL}/files/${post.image}`} alt=''/>
+                        <img src={`${process.env.REACT_APP_API_URL}/files/${post.image}`} alt=''/>
                         
                         <footer>
                             <div className='actions'>
