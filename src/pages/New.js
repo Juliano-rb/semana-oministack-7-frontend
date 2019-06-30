@@ -38,7 +38,9 @@ class New extends Component{
     render(){
         return (
             <form id="new-post" onSubmit={this.handleSubmit}>
-                <input type="file" onChange={this.handleImage}/>
+                <input 
+                    type="file" accept="image/png, image/jpeg" onChange={this.handleImage}
+                />
 
                 <input
                     type='text'
