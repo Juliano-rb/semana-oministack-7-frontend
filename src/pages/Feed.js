@@ -5,6 +5,7 @@ import io from 'socket.io-client'
 import like from '../assets/like.svg'
 import comment from '../assets/comment.svg'
 import send from '../assets/send.svg'
+import garbage from '../assets/garbage.svg'
 
 class Feed extends Component{
     state = {
@@ -75,7 +76,7 @@ class Feed extends Component{
                                 <img src={comment} alt=''/>
                                 <img src={send} alt=''/>
                                 <button onClick={ () => this.removePost(post._id) }>
-                                    <img src={send} alt=''/>
+                                    <img src={garbage} alt=''/>
                                 </button>
                             </div>
                             
